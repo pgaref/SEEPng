@@ -5,17 +5,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import main.java.uk.ac.imperial.lsds.models.Counter;
-import main.java.uk.ac.imperial.lsds.models.PlayList;
-import main.java.uk.ac.imperial.lsds.models.Recommendation;
-import main.java.uk.ac.imperial.lsds.models.Stats;
-import main.java.uk.ac.imperial.lsds.models.Track;
-import main.java.uk.ac.imperial.lsds.models.User;
+import models.Counter;
+import models.PlayList;
+import models.Recommendation;
+import models.Stats;
+import models.Track;
+import models.User;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -294,9 +295,9 @@ public class CassandraQueryController {
 				logger.debug("\n Recommendation for : " + r.getEmail() + " record merged using persistence unit -> cassandra_pu");
 			}
 		}catch(javax.persistence.PersistenceException ex){
-			logger.error("-> spark - PersistenceException");
-		}catch(org.apache.cassandra.db.marshal.MarshalException ex){
-			logger.error("-> spark - MarshalException");
+			logger.error("-> cassandra - PersistenceException");
+		}catch(Exception ex){
+			logger.error("-> cassandra - Exception");
 		}
 	}
 	
