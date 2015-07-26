@@ -5,13 +5,21 @@ apply plugin:'eclipse'
 repositories {
 	flatDir {
 		dirs '../../seep-common/build/libs'
-	}	
+	}
+	flatDir {
+       dirs './libs'
+    }
+
 	mavenCentral()
 }
 
 dependencies {
 	compile name: 'seep-common-0.1'
-	compile name: 'com.impetus.client:kundera-cassandra:2.9'
+	//compile 'com.impetus.client:kundera-cassandra:2.9'
+	compile name: 'kundera-cassandra-2.9'
+	compile name: 'javax.persistence-2.0.0'
+	compile name: 'kundera-core-2.9'
+	compile 'log4j:log4j:1.2.17'
 }
 
 
