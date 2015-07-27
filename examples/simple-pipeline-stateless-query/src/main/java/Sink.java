@@ -17,10 +17,11 @@ public class Sink implements SeepTask {
 	@Override
 	public void processData(ITuple data, API api) {
 		count++;
-//		int userId = data.getInt("userId");
-//		long ts = data.getLong("ts");
-//		String text = data.getString("text");
-//		System.out.println("UID: "+userId+" ts: "+ts+" text: "+text);
+		int userId = data.getInt("userId");
+		long ts = data.getLong("ts");
+		String text = data.getString("text");
+		System.out.println("Sink -> UID: "+userId+" ts: "+ts+" text: "+text);
+		
 		if(System.currentTimeMillis() - time > PERIOD){
 			System.out.println("e/s: "+count);
 			count = 0;

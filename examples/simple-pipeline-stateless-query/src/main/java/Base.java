@@ -13,7 +13,7 @@ public class Base implements QueryComposer {
 		
 		Schema schema1 = SchemaBuilder.getInstance().newField(Type.INT, "userId").newField(Type.LONG, "ts")
 												   .newField(Type.STRING, "text").build();
-		Schema schema2 = SchemaBuilder.getInstance().newField(Type.INT, "userId").newField(Type.LONG, "ts").build();
+//		Schema schema2 = SchemaBuilder.getInstance().newField(Type.INT, "userId").newField(Type.LONG, "ts").build();
 		
 		LogicalOperator src = queryAPI.newStatelessSource(new Source(), 0);
 		LogicalOperator processor = queryAPI.newStatelessOperator(new Processor(), 1);
