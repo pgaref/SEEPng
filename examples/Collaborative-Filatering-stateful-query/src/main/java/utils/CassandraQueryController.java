@@ -1,6 +1,7 @@
 package utils;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +31,7 @@ import com.impetus.client.cassandra.common.CassandraConstants;
  *
  */
 
-public class CassandraQueryController {
+public class CassandraQueryController implements Serializable {
 	
 	static Logger  logger = Logger.getLogger(CassandraQueryController.class);
 	static EntityManagerFactory emf;
@@ -43,7 +44,11 @@ public class CassandraQueryController {
 	 * @param user
 	 */
 	
-//	
+	//default kryo Constructor
+	public CassandraQueryController(){
+		
+	}
+	
 	public static void persist(User user) {
 		EntityManager em = getEm();
 		User tmp = em.find(User.class, user.getEmail());

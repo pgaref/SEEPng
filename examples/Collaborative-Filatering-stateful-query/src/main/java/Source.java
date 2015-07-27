@@ -1,7 +1,7 @@
 
 import java.util.List;
 
-//import models.User;
+import models.User;
 import uk.ac.imperial.lsds.seep.api.API;
 import uk.ac.imperial.lsds.seep.api.SeepTask;
 import uk.ac.imperial.lsds.seep.api.data.ITuple;
@@ -16,12 +16,12 @@ public class Source implements SeepTask {
 
 	private Schema schema = SchemaBuilder.getInstance().newField(Type.INT, "userId").newField(Type.LONG, "rating").newField(Type.STRING, "song").build();
 	private boolean working = true;
-//	private List<User> allusers;
+	private List<User> allusers;
 	
 	@Override
 	public void setUp() {
 		// TODO Auto-generated method stub
-		//allusers = CassandraQueryController.listAllUsers();
+		allusers = CassandraQueryController.listAllUsers();
 	}
 
 	
@@ -35,6 +35,8 @@ public class Source implements SeepTask {
 			//ensuring index sanity with modulo
 			byte[] d = OTuple.create(schema, new String[]{"userId", "rating", "song"}, new Object[]{userId, ts, "pg-test"});//allusers.get(userId % allusers.size()).getUsername()});
 			api.send(d);
+			
+			System.out.println("Sent -> "+ userId + " : "+ ts + " : pg-test");
 			
 			userId++;
 			ts++;
