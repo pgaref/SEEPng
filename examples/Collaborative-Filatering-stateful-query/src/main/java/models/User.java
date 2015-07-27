@@ -8,22 +8,23 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "users", schema = "play_cassandra@cassandra_pu")
 //create column family users with comparator=UTF8Type and default_validation_class=UTF8Type and key_validation_class=UTF8Type;
 public class User implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 2L;
 	
 	@Id
-	@Column(name = "email")
-	public String email;
+	@Column(name = "key")
+	private String email;
 
 	@Column(name = "username")
 	public String username;
 
 	@Column(name = "password")
-	public String password;
+	private String password;
 
 	@Column(name = "firstname")
 	public String firstname;
@@ -125,6 +126,6 @@ public class User implements Serializable{
 				+ "\nfirstName:" + this.getFistname() + "\nlastName: " + this.getLastname()
 				+ "\npass: " + this.password;
 	}
-	
+
 	
 }

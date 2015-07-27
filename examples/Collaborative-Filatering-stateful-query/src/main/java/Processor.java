@@ -11,7 +11,7 @@ import uk.ac.imperial.lsds.seep.api.state.stateimpl.SeepMap;
 public class Processor implements StatefulSeepTask<SeepMap<Integer, String>> {
 
 	private SeepMap<Integer, String> map;
-	private Schema schema = SchemaBuilder.getInstance().newField(Type.INT, "userId").newField(Type.LONG, "ts").newField(Type.STRING, "text").build();
+	private Schema schema = SchemaBuilder.getInstance().newField(Type.INT, "userId").newField(Type.LONG, "rating").newField(Type.STRING, "song").build();
 	
 	@Override
 	public void setState(SeepMap<Integer, String> map) {
@@ -26,14 +26,14 @@ public class Processor implements StatefulSeepTask<SeepMap<Integer, String>> {
 	@Override
 	public void processData(ITuple data, API api) {
 		int userId = data.getInt("userId");
-		long ts = data.getLong("ts");
-		String text = data.getString("text");
+		long ts = data.getLong("rating");
+		String text = data.getString("song");
 		text = text + "_processed";
 		userId = userId + userId;
 		map.put(userId, text);
 		ts = ts - 1;
 		
-		byte[] processedData = OTuple.create(schema, new String[]{"userId", "ts", "text"},  new Object[]{userId, ts, text});
+		byte[] processedData = OTuple.create(schema, new String[]{"userId", "rating", "song"},  new Object[]{userId, ts, text});
 		api.send(processedData);
 	}
 

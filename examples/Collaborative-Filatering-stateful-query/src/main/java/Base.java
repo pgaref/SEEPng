@@ -12,8 +12,8 @@ public class Base implements QueryComposer {
 	@Override
 	public LogicalSeepQuery compose() {
 		
-		Schema schema = SchemaBuilder.getInstance().newField(Type.INT, "userId").newField(Type.LONG, "ts")
-												   .newField(Type.STRING, "text").build();
+		Schema schema = SchemaBuilder.getInstance().newField(Type.INT, "userId").newField(Type.LONG, "rating")
+												   .newField(Type.STRING, "song").build();
 		
 		LogicalOperator src = queryAPI.newStatelessSource(new Source(), 0);
 		LogicalOperator processor = queryAPI.newStatefulOperator(new Processor(), new SeepMap(), 1);

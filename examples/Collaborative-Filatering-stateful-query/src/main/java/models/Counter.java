@@ -1,21 +1,17 @@
 package models;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import utils.CassandraQueryController;
-
 
 @Entity
 @Table(name = "counters", schema = "play_cassandra@cassandra_pu")
-public class Counter implements Serializable{
-	
-	private static final long serialVersionUID = 5L;
+public class Counter {
+
 	@Id
+	@Column(name = "key")
 	private String id;
 	
 	
@@ -76,10 +72,11 @@ public class Counter implements Serializable{
 	
 	/*
 	 * JPA Connector functionality for Easy accessibility
-	 */
+	 
 	
 	public static int getTracksCounter(){
-		return CassandraQueryController.getCounterValue("tracks");
+		return CassandraController.getCounterValue("tracks");
 	}
+	*/
 
 }

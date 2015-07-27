@@ -9,17 +9,20 @@ repositories {
 	flatDir {
        dirs './libs'
     }
-
+	mavenLocal()
 	mavenCentral()
 }
 
 dependencies {
 	compile name: 'seep-common-0.1'
 	//compile 'com.impetus.client:kundera-cassandra:2.9'
-	compile name: 'kundera-cassandra-2.9'
 	compile name: 'javax.persistence-2.0.0'
-	compile name: 'kundera-core-2.9'
+//	compile name: 'MyEntities'
+	compile name: 'commons-lang3-3.3.2'
 	compile 'log4j:log4j:1.2.17'
+	compile 'org.slf4j:slf4j-simple:1.6.1'
+	//compile 'com.datastax.cassandra:cassandra-driver-core:2.0'
+	compile 'com.impetus.client:kundera-cassandra:2.9'
 }
 
 

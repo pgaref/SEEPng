@@ -1,5 +1,6 @@
 package utils;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +19,6 @@ import models.Stats;
 import models.Track;
 import models.User;
 
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import com.impetus.client.cassandra.common.CassandraConstants;

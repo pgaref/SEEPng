@@ -13,10 +13,10 @@ public class Sink implements SeepTask {
 	@Override
 	public void processData(ITuple data, API api) {
 		int userId = data.getInt("userId");
-		long ts = data.getLong("ts");
-		String text = data.getString("text");
+		long ts = data.getLong("rating");
+		String text = data.getString("song");
 		
-		System.out.println("UID: "+userId+" ts: "+ts+" text: "+text);
+		System.out.println("UID: "+userId+" rating: "+ts+" song: "+text);
 	}
 
 	@Override

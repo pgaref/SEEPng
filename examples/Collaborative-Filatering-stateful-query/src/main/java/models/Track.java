@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +14,6 @@ import javax.persistence.Table;
 import com.impetus.kundera.index.Index;
 import com.impetus.kundera.index.IndexCollection;
 
-
 @Entity
 @Table(name = "tracks", schema = "play_cassandra@cassandra_pu")
 //Secondary index
@@ -21,9 +21,10 @@ import com.impetus.kundera.index.IndexCollection;
 public class Track implements Serializable{
 
 
-	private static final long serialVersionUID = 2L;
+	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column(name = "key")
 	public String track_id;
 	
 	@Column(name = "title")
