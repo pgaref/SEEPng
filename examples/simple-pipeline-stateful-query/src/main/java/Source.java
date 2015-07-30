@@ -24,7 +24,7 @@ public class Source implements SeepTask {
 		while(working){
 			byte[] d = OTuple.create(schema, new String[]{"userId", "ts", "text"}, new Object[]{userId, ts, "some text"});
 			api.send(d);
-			
+			System.out.println("Source -> userId: "+userId + " ts: "+ ts );
 			userId++;
 			ts++;
 			

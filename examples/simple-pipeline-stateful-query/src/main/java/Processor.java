@@ -32,7 +32,7 @@ public class Processor implements StatefulSeepTask<SeepMap<Integer, String>> {
 		userId = userId + userId;
 		map.put(userId, text);
 		ts = ts - 1;
-		
+		System.out.println("Processor -> userId: "+userId + " ts: "+ ts + " text: "+ text);
 		byte[] processedData = OTuple.create(schema, new String[]{"userId", "ts", "text"},  new Object[]{userId, ts, text});
 		api.send(processedData);
 	}

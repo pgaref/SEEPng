@@ -10,7 +10,7 @@ import uk.ac.imperial.lsds.seep.api.data.Schema.SchemaBuilder;
 public class Source implements SeepTask {
 
 	private Schema schema1 = SchemaBuilder.getInstance().newField(Type.INT, "userId").newField(Type.LONG, "ts").newField(Type.STRING, "text").build();
-	private Schema schema2 = SchemaBuilder.getInstance().newField(Type.INT, "userId").newField(Type.LONG, "ts").build();
+	//private Schema schema2 = SchemaBuilder.getInstance().newField(Type.INT, "userId").newField(Type.LONG, "ts").build();
 	private boolean working = true;
 	
 	@Override
@@ -30,6 +30,7 @@ public class Source implements SeepTask {
 //					+ "some long text to force some errors if possiblesome long text to force some errors if possible"});
 //			byte[] d = OTuple.create(schema2, new String[]{"userId", "ts"}, new Object[]{userId, ts,});
 			api.send(d);
+			System.out.println("Source sent-> userId: "+ userId + " ts: "+ ts);
 			
 			userId++;
 			ts++;
