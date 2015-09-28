@@ -81,7 +81,7 @@ public class Main {
 		Properties commandLineProperties = cla.getProperties();
 		
 		// Get Properties with file configuration
-		Properties fileProperties = Utils.readPropertiesFromFile(MasterConfig.PROPERTIES_FILE, MasterConfig.PROPERTIES_RESOURCE_FILE);
+		Properties fileProperties = Utils.readPropertiesFromFile(commandLineProperties, MasterConfig.PROPERTIES_FILE, MasterConfig.PROPERTIES_RESOURCE_FILE);
 		
 		// Merge both properties, command line has preference
 		Properties validatedProperties = Utils.overwriteSecondPropertiesWithFirst(commandLineProperties, fileProperties);

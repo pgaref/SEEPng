@@ -92,14 +92,18 @@ public class Utils {
 		return data;
 	}
 	
-	public static Properties readPropertiesFromFile(String fileName, String resFileName){
+	public static Properties readPropertiesFromFile(Properties commandLineProperties, String fileName, String resFileName){
 		Properties prop = new Properties();
-		File f = new File(fileName);
+		
+		// Get the actual property file name from command line (Could be null) 
+		String propertyFile = (String)commandLineProperties.get(fileName);
+		LOG.error("Prop file "+ propertyFile);
+		File f = new File(propertyFile);
 		try{
 			InputStream fis = null;
 			if(f.exists()){
 				// Read from file
-				fis = new FileInputStream(new File(fileName));
+				fis = new FileInputStream(new File(propertyFile));
 			}
 			else{
 				// Read from resource
