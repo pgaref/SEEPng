@@ -22,12 +22,12 @@ public class Source implements SeepTask {
 		int userId = 0;
 		long ts = 0;
 		while(working){
-			byte[] d = OTuple.create(schema, new String[]{"userId", "ts", "text"}, new Object[]{userId, ts, "some text"});
-			api.send(d);
-			
+			byte[] d = OTuple.create(schema, new String[]{"userId", "ts", "text"}, new Object[]{userId, ts, "some random text"});
+			api.send(d);	
 			userId++;
 			ts++;
 			
+			System.out.println("Source => UID: "+ userId);
 			waitHere(1000);
 		}
 

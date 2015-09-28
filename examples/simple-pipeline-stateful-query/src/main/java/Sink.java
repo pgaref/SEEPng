@@ -16,7 +16,7 @@ public class Sink implements SeepTask {
 		long ts = data.getLong("ts");
 		String text = data.getString("text");
 		
-		System.out.println("UID: "+userId+" ts: "+ts+" text: "+text);
+		System.out.println("Sink => UID: "+userId+" ts: "+ts+" text: "+text);
 	}
 
 	@Override
