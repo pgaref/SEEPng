@@ -97,7 +97,7 @@ public class Utils {
 		
 		// Get the actual property file name from command line (Could be null) 
 		String propertyFile = (String)commandLineProperties.get(fileName);
-		LOG.error("Prop file "+ propertyFile);
+		LOG.info("Prop file "+ propertyFile);
 		File f = new File(propertyFile);
 		try{
 			InputStream fis = null;

@@ -84,12 +84,13 @@ public class Main {
 		Properties fileProperties = Utils.readPropertiesFromFile(commandLineProperties, MasterConfig.PROPERTIES_FILE, MasterConfig.PROPERTIES_RESOURCE_FILE);
 		
 		// Merge both properties, command line has preference
-		Properties validatedProperties = Utils.overwriteSecondPropertiesWithFirst(commandLineProperties, fileProperties);
+		Properties validatedProperties = Utils.overwriteSecondPropertiesWithFirst(fileProperties, commandLineProperties);
 		boolean validates = validateProperties(validatedProperties);		
 		if(!validates){
 			printHelp(parser);
 			System.exit(0);
 		}
+		System.out.println("All Props "+validatedProperties.toString());
 		MasterConfig mc = new MasterConfig(validatedProperties);
 		Main instance = new Main();
 		instance.executeMaster(args, mc, cla.getQueryArgs());

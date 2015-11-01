@@ -31,6 +31,7 @@ import uk.ac.imperial.lsds.seep.util.Utils;
 import uk.ac.imperial.lsds.seepmaster.LifecycleManager;
 import uk.ac.imperial.lsds.seepmaster.infrastructure.master.ExecutionUnit;
 import uk.ac.imperial.lsds.seepmaster.infrastructure.master.InfrastructureManager;
+import uk.ac.imperial.lsds.seepmaster.infrastructure.master.ThreadNodeManager;
 
 import com.esotericsoftware.kryo.Kryo;
 
@@ -97,7 +98,7 @@ public class QueryManager {
 		this.pathToQuery = pathToJar;
 		// get logical query
 		this.lsq = executeComposeFromQuery(pathToJar, definitionClass, queryArgs);
-		LOG.debug("Logical query loaded: {}", lsq.toString());
+		LOG.debug("Logical query loaded: {}", lsq.getAllOperators().size());
 		this.executionUnitsRequiredToStart = this.computeRequiredExecutionUnits(lsq);
 		LOG.info("New query requires: {} units to start execution", this.executionUnitsRequiredToStart);
 		lifeManager.tryTransitTo(LifecycleManager.AppStatus.QUERY_SUBMITTED);
@@ -110,6 +111,15 @@ public class QueryManager {
 			LOG.error("Attempt to violate application lifecycle");
 			return false;
 		}
+		/**
+		 * If local Thread Mode - create the needed operator threads
+		 */
+		if(inf.getClass().equals(ThreadNodeManager.class)){
+			LOG.info("I AM LOCAL THREAD INSTANCE and I need ["+ this.lsq.getAllOperators().size() + "] Operators!");
+			inf.claimExecutionUnits(this.lsq.getAllOperators().size());
+			
+		}
+		
 		// Check whether there are sufficient execution units to deploy query
 		if(!canStartExecution()){
 			LOG.warn("Cannot deploy query, not enough nodes. Required: {}, available: {}"

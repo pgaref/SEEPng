@@ -24,8 +24,10 @@ public class SeepMetrics extends MetricRegistry {
 	}
 	
 	public static void startJMXReporter() {
-		jmxReporter = JmxReporter.forRegistry(REG).build();
-		jmxReporter.start();
+		if(jmxReporter == null){
+			jmxReporter = JmxReporter.forRegistry(REG).build();
+			jmxReporter.start();
+		}
 	}
 	
 	public static void startConsoleReporter(int period) {
