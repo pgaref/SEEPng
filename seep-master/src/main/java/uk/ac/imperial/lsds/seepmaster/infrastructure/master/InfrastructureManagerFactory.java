@@ -14,6 +14,10 @@ public class InfrastructureManagerFactory {
 		if(infType == InfrastructureType.PHYSICAL_CLUSTER.ofType()) {
 			return new PhysicalClusterManager();
 		}
+		else if(infType == InfrastructureType.SHARED_MULTI_THREAD.ofType()){
+			System.out.println("Getting started with multi thread!");
+			return new ThreadNodeManager();
+		}
 		return null;
 	}
 	
