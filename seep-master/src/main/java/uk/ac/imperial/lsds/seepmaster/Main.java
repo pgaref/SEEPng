@@ -90,7 +90,6 @@ public class Main {
 			printHelp(parser);
 			System.exit(0);
 		}
-		System.out.println("All Props "+validatedProperties.toString());
 		MasterConfig mc = new MasterConfig(validatedProperties);
 		Main instance = new Main();
 		instance.executeMaster(args, mc, cla.getQueryArgs());

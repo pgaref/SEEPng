@@ -1,7 +1,7 @@
 package uk.ac.imperial.lsds.seepmaster.infrastructure.master;
 
 public enum InfrastructureType {
-	PHYSICAL_CLUSTER(0), YARN_CLUSTER(1), DOCKER_CLUSTER(2), VIRTUAL_CLUSTER(3), SHARED_PHYSICAL_CLUSTER(4), SHARED_MULTI_THREAD(5);
+	PHYSICAL_CLUSTER(0), YARN_CLUSTER(1), DOCKER_CLUSTER(2), VIRTUAL_CLUSTER(3), SHARED_PHYSICAL_CLUSTER(4), LOCAL_MULTITHREAD(5);
 	
 	private int type;
 	
